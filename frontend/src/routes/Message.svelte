@@ -5,22 +5,33 @@
 
 </script>
 
-<DataTable table$aria-label="People list" style="max-width: 100%;">
+<DataTable table$aria-label="Message" style="max-width: 100%;">
     <Head>
         <Row>
-            <Cell>Counter</Cell>
-            <Cell>Title</Cell>
-            <Cell>Message</Cell>
-            <Cell numeric>Timestamp</Cell>
+            <Cell>Field</Cell>
+            <Cell>Value</Cell>
         </Row>
     </Head>
     <Body>
-    <Row>
-        <Cell>{data.Counter}</Cell>
-        <Cell>{message_data.Title}</Cell>
-        <Cell>{message_data.Content}</Cell>
-        <Cell numeric>{message_data.Timestamp}</Cell>
-    </Row>
+        <Row>
+            <Cell>Counter</Cell>
+            <Cell>{data.Counter}</Cell>
+        </Row>
+        <Row>
+            <Cell>Title</Cell>
+            <Cell>{message_data.Title}</Cell>
+        </Row>
+        <Row>
+            <Cell>Content</Cell>
+            <Cell>{message_data.Content}</Cell>
+        </Row>
+        <Row>
+            <Cell>Timestamp</Cell>
+            <Cell numeric>{message_data.Timestamp}</Cell>
+        </Row>
     </Body>
 </DataTable>
 
+<style>
+
+</style>

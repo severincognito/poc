@@ -3,7 +3,9 @@ package main
 import (
 	"encoding/json"
 	"encoding/xml"
+	"fmt"
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/websocket/v2"
 	"github.com/google/gopacket"
 	"github.com/google/gopacket/layers"
@@ -87,6 +89,7 @@ func main() {
 	go getXML(input)
 
 	app := fiber.New()
+	app.Use(cors.New())
 	//app.Static("/", "./static")
 
 	app.Use("/resetCounter", func(c *fiber.Ctx) error {
@@ -121,6 +124,25 @@ func main() {
 			counter++
 		}
 	}))
+
+	app.Post("/transmit", func(c *fiber.Ctx) error {
+		// getting json payload
+		var payload Message
+		if err := json.Unmarshal(c.Body(), &payload); err != nil {
+			fmt.Println("oh no")
+			return err
+		}
+		// converting to xml
+		data, err := xml.Marshal(payload)
+		if err != nil {
+			fmt.Println("oh no")
+			return err
+		}
+		// sending xml out...
+		fmt.Println(string(data))
+
+		return c.JSON("ok")
+	})
 
 	log.Fatal(app.Listen(":8080"))
 }

@@ -22,7 +22,7 @@ func main() {
 
 	for {
 		// marshal and send it to udp server..
-		msg, err := xml.Marshal(Message{Title: "bonjour de xml", Content: "123", Timestamp: time.Now().UnixMilli()})
+		msg, err := xml.Marshal(Message{Title: "balise XML standard", Content: "Un machin", Timestamp: time.Now().UnixMilli()})
 		if err != nil {
 			log.Fatal(err)
 			return
