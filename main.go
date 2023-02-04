@@ -88,6 +88,12 @@ func main() {
 
 	app := fiber.New()
 	//app.Static("/", "./static")
+
+	app.Use("/resetCounter", func(c *fiber.Ctx) error {
+		counter = 0
+		return c.JSON("ok")
+	})
+
 	app.Use("/ws", func(c *fiber.Ctx) error {
 		// IsWebSocketUpgrade returns true if the client
 		// requested upgrade to the WebSocket protocol.
