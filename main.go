@@ -75,7 +75,7 @@ func getXML(c chan Message) {
 
 func main() {
 
-	go savePcap()
+	//go savePcap()
 
 	input := make(chan Message, 10)
 	go getXML(input)

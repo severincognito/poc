@@ -28,7 +28,7 @@ func main() {
 			return
 		}
 		conn.Write(msg)
-		time.Sleep(10 * time.Millisecond)
+		time.Sleep(1000 * time.Millisecond)
 	}
 
 	conn.Close()

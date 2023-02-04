@@ -1,8 +1,7 @@
 <script>
-    export let title;
-    export let message;
-    export let timestamp;
+    export let data = {};
     import DataTable, { Head, Body, Row, Cell } from '@smui/data-table';
+
 </script>
 
 <DataTable table$aria-label="People list" style="max-width: 100%;">
@@ -15,9 +14,9 @@
     </Head>
     <Body>
     <Row>
-        <Cell>{title}</Cell>
-        <Cell>{message}</Cell>
-        <Cell numeric>{timestamp}</Cell>
+        <Cell>{data.Title}</Cell>
+        <Cell>{data.Content}</Cell>
+        <Cell numeric>{data.Timestamp}</Cell>
     </Row>
     </Body>
 </DataTable>
