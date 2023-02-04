@@ -14,6 +14,11 @@ import (
 	"os"
 )
 
+type AppMessage struct {
+	Counter int64
+	Message Message
+}
+
 type Message struct {
 	Title     string `xml:"title"`
 	Timestamp int64  `xml:"timestamp,attr"`
@@ -74,6 +79,7 @@ func getXML(c chan Message) {
 }
 
 func main() {
+	var counter int64
 
 	//go savePcap()
 
@@ -96,7 +102,8 @@ func main() {
 		// websocket.Conn bindings https://pkg.go.dev/github.com/fasthttp/websocket?tab=doc#pkg-index
 		for {
 			m := <-input
-			b, err := json.Marshal(m)
+			appM := AppMessage{counter, m}
+			b, err := json.Marshal(appM)
 			if err != nil {
 				panic(err)
 			}
@@ -105,6 +112,7 @@ func main() {
 				log.Println("write:", err)
 				break
 			}
+			counter++
 		}
 	}))
 

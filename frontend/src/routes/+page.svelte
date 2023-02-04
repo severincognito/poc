@@ -1,6 +1,6 @@
 <script>
     import { onMount } from "svelte";
-    import  Message2  from "./Message2.svelte"
+    import  Message  from "./Message.svelte"
 
     let socket;
     let data;
@@ -19,4 +19,4 @@
 
 <h1>Un espion xml basique.</h1>
 
-<Message2 {data} />
+<Message {data} />

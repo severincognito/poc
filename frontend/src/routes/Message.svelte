@@ -1,19 +1,25 @@
 <script>
-    export let title;
-    export let message;
-    export let timestamp;
+    export let data = {};
+    import DataTable, { Head, Body, Row, Cell } from '@smui/data-table';
+
 </script>
 
-<p>
-Title: {title}
-Content: {message}
-Timestamp: {timestamp}
-</p>
+<DataTable table$aria-label="People list" style="max-width: 100%;">
+    <Head>
+        <Row>
+            <Cell>Counter</Cell>
+            <Cell>Title</Cell>
+            <Cell>Message</Cell>
+            <Cell numeric>Timestamp</Cell>
+        </Row>
+    </Head>
+    <Body>
+    <Row>
+        <Cell>{data.Counter}</Cell>
+        <Cell>{data.Message.Title}</Cell>
+        <Cell>{data.Message.Content}</Cell>
+        <Cell numeric>{data.Message.Timestamp}</Cell>
+    </Row>
+    </Body>
+</DataTable>
 
-<style>
-    p {
-        color: purple;
-        font-family: 'Comic Sans MS', cursive;
-        font-size: 2em;
-    }
-</style>
