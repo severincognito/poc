@@ -90,7 +90,7 @@ func main() {
 
 	app := fiber.New()
 	app.Use(cors.New())
-	//app.Static("/", "./static")
+	app.Static("/", "./static")
 
 	app.Use("/resetCounter", func(c *fiber.Ctx) error {
 		counter = 0

@@ -6,7 +6,9 @@ const config = {
 		adapter: adapter({
 			pages: '../static',
 			assets: '../static',
-			strict: false,
+      		fallback: null,
+      		precompress: false,
+      		strict: true
 		})
 	}
 };
