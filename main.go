@@ -97,7 +97,7 @@ func main() {
 		return fiber.ErrUpgradeRequired
 	})
 
-	app.Get("/ws/:id", websocket.New(func(c *websocket.Conn) {
+	app.Get("/ws/spy", websocket.New(func(c *websocket.Conn) {
 		// websocket.Conn bindings https://pkg.go.dev/github.com/fasthttp/websocket?tab=doc#pkg-index
 		for {
 			m := <-input
@@ -117,7 +117,7 @@ func main() {
 
 	app.Get("/resetCounter", func(c *fiber.Ctx) error {
 		counter = 0
-		return c.JSON("ok")
+		return c.JSON(fiber.Map{"result": "ok"})
 	})
 
 	app.Post("/transmit", func(c *fiber.Ctx) error {

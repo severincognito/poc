@@ -31,7 +31,3 @@
         </Row>
     </Body>
 </DataTable>
-
-<style>
-
-</style>

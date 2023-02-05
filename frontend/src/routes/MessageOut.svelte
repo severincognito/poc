@@ -8,7 +8,6 @@
     let snackbarWithoutClose = Snackbar;
 
     let message_data = {};
-
     let Content = "";
     let Title ="";
     let Timestamp = 0;
