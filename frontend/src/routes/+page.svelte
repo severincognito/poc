@@ -21,11 +21,10 @@
     });
 </script>
 
-<LayoutGrid >
     <Cell order=1 span={2}>
         <div class="demo-cell"><Fab extended><Label>Un simulateur XML basique.</Label></Fab></div>
     </Cell>
-    <Cell order=0 span={2}>
+
         <Cell order=1>
             <div class="demo-cell"><ResetButton /></div>
         </Cell>
@@ -36,13 +35,9 @@
         <Cell order=2>
             <div class="demo-cell"><MessageOut /></div>
        </Cell>
-    </Cell>
-</LayoutGrid>
-
 
 <style>
     .demo-cell {
-      /*  height: 60px;*/
         display: flex;
         justify-content: center;
         align-items: center;

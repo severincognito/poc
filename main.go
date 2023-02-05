@@ -141,7 +141,7 @@ func main() {
 		// sending xml out...
 		fmt.Println(string(data))
 
-		return c.JSON("ok")
+		return c.JSON(fiber.Map{"result": "ok"})
 	})
 
 	log.Fatal(app.Listen(":8080"))

@@ -3,6 +3,9 @@
     import Button, { Label } from '@smui/button';
     import Textfield from '@smui/textfield';
     import HelperText from '@smui/textfield/helper-text';
+    import Snackbar from '@smui/snackbar';
+
+    let snackbarWithoutClose = Snackbar;
 
     let message_data = {};
 
@@ -21,8 +24,9 @@
                 "timestamp": Timestamp
             })
         })
-        const json = await res.json()
-        result = JSON.stringify(json)
+        let resultJSON = await res.json()
+        result = resultJSON.result;
+        snackbarWithoutClose.open();
     }
 
 </script>
@@ -65,4 +69,6 @@
     <Label>Transmit</Label>
 </Button>
 
-{result}
+<Snackbar bind:this={snackbarWithoutClose}>
+    <Label>Transmit result:  {result}.</Label>
+</Snackbar>
