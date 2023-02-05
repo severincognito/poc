@@ -65,12 +65,7 @@ func getXML(c chan Message) {
 
 	b := make([]byte, 512)
 	for {
-		// 1. read it to byte slice
 		n, _, err := s.ReadFrom(b)
-
-		//fmt.Println(string(b))
-
-		// 2. unmarshal it to Message struct
 		var msg Message
 		if err = xml.Unmarshal(b[:n], &msg); err != nil {
 			log.Println(err)
@@ -91,11 +86,6 @@ func main() {
 	app := fiber.New()
 	app.Use(cors.New())
 	app.Static("/", "./static")
-
-	app.Use("/resetCounter", func(c *fiber.Ctx) error {
-		counter = 0
-		return c.JSON("ok")
-	})
 
 	app.Use("/ws", func(c *fiber.Ctx) error {
 		// IsWebSocketUpgrade returns true if the client
@@ -124,6 +114,11 @@ func main() {
 			counter++
 		}
 	}))
+
+	app.Get("/resetCounter", func(c *fiber.Ctx) error {
+		counter = 0
+		return c.JSON("ok")
+	})
 
 	app.Post("/transmit", func(c *fiber.Ctx) error {
 		// getting json payload
